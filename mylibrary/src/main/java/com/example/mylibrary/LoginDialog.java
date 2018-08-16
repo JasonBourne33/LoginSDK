@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.mylibrary2.R;
@@ -19,14 +21,17 @@ import com.example.mylibrary2.R;
 
 public class LoginDialog extends Dialog implements View.OnClickListener{
     private Context mContext;
+    private FragmentManager mFragmentManager;
+
     private EditText etUser;
     private EditText etPwd;
     private ImageView imgEye;
     private ImageView imgClose;
     private Button btnEnter;
-    public LoginDialog(@NonNull Context context) {
+    public LoginDialog(@NonNull Context context, FragmentManager fragmentManager) {
         super(context);
         this.mContext = context;
+        this.mFragmentManager = fragmentManager;
     }
 
     public LoginDialog(@NonNull Context context, int themeResId) {
@@ -48,9 +53,11 @@ public class LoginDialog extends Dialog implements View.OnClickListener{
         imgClose = findViewById(R.id.img_close);
         btnEnter = findViewById(R.id.btn_enter);
         Button btnEnter = findViewById(R.id.btn_enter);
+        RelativeLayout rlRegister = findViewById(R.id.rl_register);
         btnEnter.setOnClickListener(this);
         imgEye.setOnClickListener(this);
         imgClose.setOnClickListener(this);
+        rlRegister.setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +65,11 @@ public class LoginDialog extends Dialog implements View.OnClickListener{
         int i = v.getId();
         if (i == R.id.img_close) {
             dismiss();
+        }
+        if (i == R.id.rl_register) {
+            RegisterDialog registerDialog = new RegisterDialog(mContext,mFragmentManager);
+            registerDialog.show();
+//            dismiss();
         }
         if (i == R.id.btn_enter) {
             String strUser = etUser.getText().toString();

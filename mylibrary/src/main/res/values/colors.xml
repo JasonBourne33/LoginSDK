@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_Sel_gray">#3C3D3E</color>
+    <color name="color_item_background_gray">#282828</color>
+    <color name="color_font_gray">#ff959595</color>
+    <color name="popup_main_background">#70000000</color>
+    <color name="black">#000000</color>
+    <color name="word_color">#333333</color>
+    <color name="red">#ffff0000</color>
+    <color name="gold">#FFD700</color>
+    <color name="green">#009933</color>
+    <color name="blue">#1E90FF</color>
+    <color name="choose_eara_item_press_color">#fff4f4f4</color>
+    <color name="white">#ffffffff</color>
+    <color name="no_color">#00000000</color>
+    <color name="register_global_text_hint">#C7C7CC</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="shadow_color">#b3000000</color>
+    <color name="shadow_color1">#b3ffffff</color>
+    <color name="shadow_color2">#e0ffffff</color>
+    <color name="color_background_gray">#252627</color>
+    <!-- actionbar相关颜色 -->
+    <color name="actionbar_head_back">#000000</color>
+
+    <!-- 入驻商家相关颜色 -->
+    <color name="slide_menu">#F5F7F3</color>
+    <color name="slide_menu_text">#000000</color>
+    <color name="slide_menu_text_press">#FFFFFF</color>
+    <color name="list_color">#ffffffff</color>
+    <!-- 手机充值相关颜色 -->
+    <color name="comfirm_topup_back">#525354</color>
+    <color name="topuo_cometo_time">#FDB025</color>
+    <color name="bg_green">#7FD5D9</color>
+    <color name="list_divider">#DADADA</color>
+
+    <!-- 賬單條目相關字體顏色 -->
+    <color name="bill_font_color">#ff3a3a3a</color>
+    <!-- ListView Item 默認選中顏色 -->
+    <color name="button_back_gray">#306B71</color>
+    <color name="main_item_textcolor">#66000000</color>
+    <color name="main_topbar_center_text_color">#ffda53</color>
+    <color name="main_login_area_color">#bababa</color>
+    <color name="main_login_main_color">#333333</color>
+    <color name="main_login_main_divider">#28241d</color>
+    <color name="gray">#676767</color>
+    <color name="golden">#FFDA55</color>
+    <color name="radio_text_black">#000000</color>
+    <color name="darkgrey">#A9A9A9</color> <!-- 暗灰色 -->
+    <color name="color_text">#373737</color> <!-- 正常文字顏色 -->
+    <color name="divider_pop">#8b8b8b</color>
+    <color name="text_yellow">#484848</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="navpage">#FFE1E8EB</color>
+    <color name="transparent">#00000000</color>
+    <color name="default_light_black_color">#424242</color>
+
+    <!-- contact item color -->
+    <color name="message_time_color">#a0a0a0</color>
+
+    <!-- album -->
+    <color name="list_divider_color">#d1d1d1</color>
+    <color name="album_list_item_count_color">#bcbcbc</color>
+
+    <!-- login -->
+
+    <!-- default -->
+    <color name="default_light_grey_color">#929292</color>
+    <color name="default_blue_color">#01aff4</color>
+    <color name="default_title_color">#343434</color>
+
+    <!-- contact -->
+
+    <!-- group manager -->
+
+    <!-- user detail -->
+    <color name="pickimage_item_bg">#ffffff</color>
+
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <!--浅灰色 -->
+
+    <color name="business_adapter_discount">#F2311C</color>
+    
+     <!-- crop image view -->
+     <color name="ycl_black_60">#aa000000</color>
+    <color name="ycl_black_20">#33000000</color>
+    <color name="ycl_white">#FFFFFFFF</color>
+    <color name="ycl_content_color">#ededeb</color>
+    <color name="ycl_main_text">#353535</color>
+    <color name="ycl_content_color_press">#BCBCBC</color>
+    <color name="ycl_center_grey">#8E8E8E</color>
+    <color name="ycl_overlay">#AA1C1C1C</color>
+    <color name="ycl_handle">#86C166</color>
+    <color name="ycl_frame">#86C166</color>
+    <color name="ycl_guide">#AA86C166</color>
+    <color name="gay_236">#ececec</color>
+
+    <color name="theme_blue">#1fa3e1</color> <!--主要的蓝色背景-->
+    <color name="theme_gay">#f5f5f5</color>  <!--主要的灰色背景-->
+
+    <color name="line_gay">#ececec</color>  <!--白色背景下的灰色线条颜色-->
+    <color name="line_gay_gay_back">#cecece</color><!--灰色背景下的灰色线条颜色-->
+
+    <!--字体颜色-->
+    <color name="font_black">#494949</color>
+    <color name="font_white">#ffffff</color>
+    <color name="font_blue">#1fa3e1</color>
+    <color name="font_gray">#939393</color>
+    <color name="font_red">#ff2b23</color>
+    <color name="font_green">#32a83a</color>
+    <color name="font_yellow">#ffd200</color>
+    <!--<color name="font_gray">#ffff00</color>-->
+
+    <!--button颜色  -->
+    <color name="button_blue">#1fa3e0</color>
+    <color name="button_green">#32a83a</color>
+    <color name="button_gray">#cdcdcd</color>
+    <color name="button_orange">#ff9e05</color>
+    <color name="button_red">#ff2b23</color>
+</resources>

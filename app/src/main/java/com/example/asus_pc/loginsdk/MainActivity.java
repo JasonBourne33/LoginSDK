@@ -1,5 +1,6 @@
 package com.example.asus_pc.loginsdk;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TestSdk.print(this,fragmentManager);
+        TestSdk.login(this, fragmentManager, new TestSdk.OnLoginListener() {
+            @Override
+            public void onSuccess(String successJson) {
+                Intent intent = new Intent(MainActivity.this,InGameActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailed(String failJson) {
+
+            }
+
+        });
         Button btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
 
@@ -28,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btn_login:
                 FragmentManager fragmentManager = getSupportFragmentManager();
-                TestSdk.print(this,fragmentManager);
+                TestSdk.login(this,fragmentManager);
                 break;
         }
     }

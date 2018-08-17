@@ -6,11 +6,29 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class TestSdk {
-    public static void print(Context context, FragmentManager fragmentManager){
+//    public static void login(Context context, FragmentManager fragmentManager) {
+//        login(context,fragmentManager,mOnLoginListener);
+//    }
 
-        Log.i("aaa","test=== ");
-        Toast.makeText(context,"print=== ",Toast.LENGTH_LONG).show();
-        LoginDialog loginDialog = new LoginDialog(context,fragmentManager);
-        loginDialog.show();
+    public static void login(Context context, FragmentManager fragmentManager,OnLoginListener listener) {
+
+        Log.i("aaa", "test=== ");
+        if(listener != null){
+            LoginDialog loginDialog = new LoginDialog(context, fragmentManager,listener);
+            loginDialog.show();
+        }else {
+
+        }
+    }
+
+    public static OnLoginListener mOnLoginListener;
+
+    public interface OnLoginListener {
+        void onSuccess(String successJson);
+        void onFailed(String failJson);
+    }
+
+    public static void setOnLoginListener(OnLoginListener listener) {
+        mOnLoginListener = listener;
     }
 }

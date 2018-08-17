@@ -85,8 +85,8 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
             dismiss();
         }
         if (i == R.id.rl_register) {
-//            RegisterDialog registerDialog = new RegisterDialog(mContext,mFragmentManager);
-//            registerDialog.show();
+            RegisterDialog registerDialog = new RegisterDialog(mContext,mFragmentManager);
+            registerDialog.show();
 //            dismiss();
         }
         if (i == R.id.btn_enter) {

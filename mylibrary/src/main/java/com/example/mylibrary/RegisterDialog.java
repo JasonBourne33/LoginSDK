@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.support.design.widget.TabLayout;
@@ -54,7 +55,7 @@ public class RegisterDialog extends AppCompatDialog{
 
         tabLayout =  findViewById(R.id.tab_mine_pay);
         viewPager =  findViewById(R.id.vp_mine_pay);
-
+        Log.e("e","fragmentManager=== "+fragmentManager);
         listFragment = new ArrayList<>();
         adapter = new ViewPagerAdapter(fragmentManager, listFragment);
         for (int i = 0; i < titles.length; i++) {

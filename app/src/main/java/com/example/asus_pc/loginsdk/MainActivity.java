@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                TestSdk.login(this,fragmentManager);
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                TestSdk.login(this,fragmentManager);
                 break;
         }
     }

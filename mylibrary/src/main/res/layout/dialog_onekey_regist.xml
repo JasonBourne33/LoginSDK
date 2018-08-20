@@ -124,18 +124,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/gray" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_forgetPwd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="10dp"
-                    android:text="忘记密码" />
-            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_enter"
@@ -143,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/game_sdk_button_bg"
                 android:textColor="@color/white"
-                android:text="登录" />
+                android:text="完成注册" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -151,31 +139,13 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp">
 
-                <RelativeLayout
-                    android:id="@+id/rl_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_regist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="还没有账号？"
-                        android:textColor="@color/line_gay_gay_back" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_regist"
-                        android:text="马上注册吧？" />
-                </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/tv_oneKeyRegist"
+                    android:id="@+id/tv_backToLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="一键注册"
+                    android:text="返回登录"
                     android:textColor="@color/blue" />
             </RelativeLayout>
         </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.mylibrary;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,9 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mylibrary2.R;
+import com.example.util.SharedPreferencesUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +31,6 @@ import okhttp3.Response;
 
 public class LoginDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
-    private FragmentManager mFragmentManager;
     private TestSdk.OnLoginListener listener;
 
     private EditText etUser;
@@ -36,11 +38,12 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
     private ImageView imgEye;
     private ImageView imgClose;
     private Button btnEnter;
+    private TextView tvOneKeyRegist;
+    private TextView tvForgetPwd;
 
-    public LoginDialog(@NonNull Context context, FragmentManager fragmentManager, TestSdk.OnLoginListener listener) {
+    public LoginDialog(@NonNull Context context, TestSdk.OnLoginListener listener) {
         super(context);
         this.mContext = context;
-        this.mFragmentManager = fragmentManager;
         this.listener = listener;
     }
 
@@ -70,12 +73,17 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
         imgEye = findViewById(R.id.img_eye);
         imgClose = findViewById(R.id.img_close);
         btnEnter = findViewById(R.id.btn_enter);
+        tvForgetPwd = findViewById(R.id.tv_forgetPwd);
+
+        tvOneKeyRegist = findViewById(R.id.tv_oneKeyRegist);
         Button btnEnter = findViewById(R.id.btn_enter);
         RelativeLayout rlRegister = findViewById(R.id.rl_register);
         btnEnter.setOnClickListener(this);
         imgEye.setOnClickListener(this);
         imgClose.setOnClickListener(this);
         rlRegister.setOnClickListener(this);
+        tvOneKeyRegist.setOnClickListener(this);
+        tvForgetPwd.setOnClickListener(this);
     }
 
     @Override
@@ -84,13 +92,22 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
         if (i == R.id.img_close) {
             dismiss();
         }
+        if (i == R.id.tv_forgetPwd) {
+            FindBackPwdDialog findBackPwdDialog = new FindBackPwdDialog(mContext);
+            findBackPwdDialog.show();
+        }
+        if (i == R.id.tv_oneKeyRegist) {
+            OneKeyRegistDialog oneKeyRegistDialog = new OneKeyRegistDialog(mContext);
+            oneKeyRegistDialog.show();
+        }
         if (i == R.id.rl_register) {
-            RegisterDialog registerDialog = new RegisterDialog(mContext,mFragmentManager);
-            registerDialog.show();
+//            RegisterDialog registerDialog = new RegisterDialog();
+//            registerDialog.show(mFragmentManager,"dialog_fragment");
 //            dismiss();
+            Intent intent = new Intent(mContext,RegisterDialog.class);
+            mContext.startActivity(intent);
         }
         if (i == R.id.btn_enter) {
-            Log.e("e", "btn enter=== ");
             LoginRequest();
         }
         if (i == R.id.img_eye) {
@@ -108,7 +125,6 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
     }
 
     private void LoginRequest() {
-        Log.e("e", "LoginRequest=== ");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -121,13 +137,13 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
                     Response response = client.newCall(request).execute();
                     String jsonData = response.body().string();
                     JSONObject jsonObject = new JSONObject(jsonData);
-                    Log.e("e", "jsonData is=== " + jsonData);
 
                     int erroe_code = jsonObject.getInt("erroe_code");
-                    Log.e("e", "erroe_code is=== " + erroe_code);
                     if (erroe_code == 1) {
                         if (listener != null) {
                             listener.onSuccess("SUCCESS");
+                            SharedPreferencesUtil.putString(mContext,"userName",etUser.getText().toString());
+                            SharedPreferencesUtil.putString(mContext,"userPwd",etUser.getText().toString());
                         }
                     } else {
                         if (listener != null) {

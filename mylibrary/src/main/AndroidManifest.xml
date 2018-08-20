@@ -1,2 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mylibrary2" />
+    package="com.example.mylibrary2">
+
+    <application>
+        <activity android:name="com.example.mylibrary.RegisterActivity"></activity>
+        <activity android:name="com.example.mylibrary.RegisterDialog" android:theme="@style/dialogstyle"></activity>
+    </application>
+
+</manifest>

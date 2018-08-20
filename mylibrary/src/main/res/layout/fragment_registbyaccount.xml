@@ -110,9 +110,10 @@
 
             <ImageView
                 android:id="@+id/img_enter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="6dp"
+                android:layout_height="10dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/game_sdk_enter_icon"/>
             <TextView
                 android:id="@+id/tv_forgetPwd"

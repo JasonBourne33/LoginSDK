@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        TestSdk.login(this, fragmentManager, new TestSdk.OnLoginListener() {
+        TestSdk.login(this, new TestSdk.OnLoginListener() {
             @Override
             public void onSuccess(String successJson) {
                 Intent intent = new Intent(MainActivity.this,InGameActivity.class);
@@ -42,6 +42,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_login:
 //                FragmentManager fragmentManager = getSupportFragmentManager();
 //                TestSdk.login(this,fragmentManager);
+                TestSdk.login(this, new TestSdk.OnLoginListener() {
+                    @Override
+                    public void onSuccess(String successJson) {
+                        Intent intent = new Intent(MainActivity.this,InGameActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailed(String failJson) {
+
+                    }
+
+                });
                 break;
         }
     }

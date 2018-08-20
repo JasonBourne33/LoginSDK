@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="用户登录" />
+                android:text="找回密码" />
 
             <ImageView
                 android:id="@+id/img_close"
@@ -83,7 +83,50 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/gray" />
+            <RelativeLayout
+                android:layout_width="@dimen/ll_width_login_dialog"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_verify"
+                    android:layout_width="21dp"
+                    android:layout_height="26dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/game_sdk_pwd_icon" />
+
+                <EditText
+                    android:id="@+id/et_verify"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/img_verify"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/tv_sms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="获取验证码"
+                    android:textColor="@color/white"
+                    android:background="@drawable/shape_get_sms"
+                    android:padding="10dp"
+                    android:src="@drawable/game_sdk_pwd_eye_icon" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray" />
             <RelativeLayout
                 android:layout_width="@dimen/ll_width_login_dialog"
                 android:layout_height="wrap_content">
@@ -124,18 +167,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/gray" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_forgetPwd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="10dp"
-                    android:text="忘记密码" />
-            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_enter"
@@ -143,41 +174,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/game_sdk_button_bg"
                 android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
                 android:text="登录" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="15dp">
-
-                <RelativeLayout
-                    android:id="@+id/rl_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_regist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="还没有账号？"
-                        android:textColor="@color/line_gay_gay_back" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/tv_regist"
-                        android:text="马上注册吧？" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/tv_oneKeyRegist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="一键注册"
-                    android:textColor="@color/blue" />
-            </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

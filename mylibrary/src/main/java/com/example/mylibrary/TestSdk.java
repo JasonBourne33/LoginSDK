@@ -10,11 +10,11 @@ public class TestSdk {
 //        login(context,fragmentManager,mOnLoginListener);
 //    }
 
-    public static void login(Context context, FragmentManager fragmentManager,OnLoginListener listener) {
+    public static void login(Context context,OnLoginListener listener) {
 
         Log.i("aaa", "test=== ");
         if(listener != null){
-            LoginDialog loginDialog = new LoginDialog(context, fragmentManager,listener);
+            LoginDialog loginDialog = new LoginDialog(context, listener);
             loginDialog.show();
         }else {
 

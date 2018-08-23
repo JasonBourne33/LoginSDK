@@ -5,6 +5,12 @@
     <application>
         <activity android:name="com.example.mylibrary.RegisterActivity"></activity>
         <activity android:name="com.example.mylibrary.RegisterDialog" android:theme="@style/dialogstyle"></activity>
+
+        <service
+            android:name="com.example.service.StartFloatBallService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
+
 
 </manifest>

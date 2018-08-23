@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -16,17 +15,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.dao.LoginBean;
 import com.example.mylibrary2.R;
 import com.example.util.SharedPreferencesUtil;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static android.content.ContentValues.TAG;
 
 
 public class LoginDialog extends Dialog implements View.OnClickListener {
@@ -84,6 +90,8 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
         rlRegister.setOnClickListener(this);
         tvOneKeyRegist.setOnClickListener(this);
         tvForgetPwd.setOnClickListener(this);
+
+//        Log.e(TAG, "System.currentTimeMillis():=== "+System.currentTimeMillis()/1000);
     }
 
     @Override
@@ -104,7 +112,7 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
 //            RegisterDialog registerDialog = new RegisterDialog();
 //            registerDialog.show(mFragmentManager,"dialog_fragment");
 //            dismiss();
-            Intent intent = new Intent(mContext,RegisterDialog.class);
+            Intent intent = new Intent(mContext, RegisterDialog.class);
             mContext.startActivity(intent);
         }
         if (i == R.id.btn_enter) {
@@ -128,32 +136,46 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://45.78.17.33/gameserver/user/login?uid=1")
-//                            .url("http://10.0.2.2/get_data.json")
-                            .build();
-                    Response response = client.newCall(request).execute();
-                    String jsonData = response.body().string();
-                    JSONObject jsonObject = new JSONObject(jsonData);
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("http://45.78.17.33/gameserver/user/login?uid=1")
+                        .build();
+//                    Response response = client.newCall(request).execute();
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
 
-                    int erroe_code = jsonObject.getInt("erroe_code");
-                    if (erroe_code == 1) {
-                        if (listener != null) {
-                            listener.onSuccess("SUCCESS");
-                            SharedPreferencesUtil.putString(mContext,"userName",etUser.getText().toString());
-                            SharedPreferencesUtil.putString(mContext,"userPwd",etUser.getText().toString());
-                        }
-                    } else {
-                        if (listener != null) {
-                            listener.onFailed("FAIL");
-                        }
                     }
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        try {
+                            String jsonData = response.body().string();
+                            Gson gson = new Gson();
+                            LoginBean bean = gson.fromJson(jsonData, LoginBean.class);
+                            Log.v("TAG", "" + bean.getErroe_code());
+                            JSONObject jsonObject = null;
+
+                            jsonObject = new JSONObject(jsonData);
+
+                            int erroe_code = jsonObject.getInt("erroe_code");
+                            if (erroe_code == 1) {
+                                if (listener != null) {
+                                    listener.onSuccess("SUCCESS");
+                                    SharedPreferencesUtil.putString(mContext, "userName", etUser.getText().toString());
+                                    SharedPreferencesUtil.putString(mContext, "userPwd", etUser.getText().toString());
+                                }
+                            } else {
+                                if (listener != null) {
+                                    listener.onFailed("FAIL");
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         }).start();
     }

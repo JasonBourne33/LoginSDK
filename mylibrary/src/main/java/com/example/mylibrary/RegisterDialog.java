@@ -76,7 +76,7 @@ public class RegisterDialog extends AppCompatActivity implements View.OnClickLis
             tabLayout.addTab(tabLayout.newTab().setCustomView(view));
         }
         Fragment registByPhoneFragment = new RegistByPhoneFragment();
-        Fragment registByAccountAccount = new RegistByAccountFragment();
+        Fragment registByAccountAccount = new RegistByAccountFragment(this);
         listFragment.add(registByPhoneFragment);
         listFragment.add(registByAccountAccount);
         viewPager.setAdapter(adapter);

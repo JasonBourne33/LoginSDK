@@ -19,6 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".InGameActivity"></activity>
+
+        <service
+            android:name="com.example.service.StartFloatBallService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

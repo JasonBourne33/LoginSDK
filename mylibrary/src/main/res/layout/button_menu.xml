@@ -4,8 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:background="@drawable/window_button_backgound"
-    android:paddingLeft="60dp"
+    android:paddingLeft="50dp"
     android:paddingRight="20dp"
+    android:paddingTop="5dp"
+    android:layout_centerVertical="true"
     android:orientation="horizontal">
 
     <RelativeLayout
@@ -16,7 +18,7 @@
 
         <ImageView
             android:id="@+id/img_icon"
-            android:layout_width="12dp"
+            android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
@@ -39,7 +41,7 @@
 
         <ImageView
             android:id="@+id/img_recorder"
-            android:layout_width="12dp"
+            android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_margin="5dp"
             android:layout_centerHorizontal="true"

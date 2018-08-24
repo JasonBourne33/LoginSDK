@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
     android:layout_height="340dp"
     android:layout_centerInParent="true"
@@ -34,26 +34,41 @@
                 android:src="@drawable/game_sdk_close_icon" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="@dimen/ll_width_login_dialog"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_head"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <android.support.design.widget.TabLayout
+
+            <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/tab_mine_pay"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_centerHorizontal="true"
-                app:tabIndicatorHeight="0dip" />
+                android:background="#ffffff"
+                tl:tl_divider_color="#1A000000"
+                tl:tl_divider_padding="13dp"
+                tl:tl_divider_width="1dp"
+                tl:tl_indicator_color="#3595fa"
+                tl:tl_indicator_height="1.5dp"
+                tl:tl_tab_padding="22dp"
+                tl:tl_tab_space_equal="true"
+                tl:tl_textSelectColor="#000000"
+                tl:tl_textUnselectColor="#afb2b2"
+                tl:tl_underline_color="#1A000000"
+                tl:tl_underline_height="1dp"/>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_mine_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_below="@id/tab_mine_pay" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

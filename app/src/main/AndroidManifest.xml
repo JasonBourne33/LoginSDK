@@ -18,12 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InGameActivity"></activity>
+        <activity android:name=".InGameActivity" />
 
         <service
             android:name="com.example.service.StartFloatBallService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+
     </application>
 
 </manifest>

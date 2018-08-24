@@ -65,6 +65,7 @@ public class ViewManager {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Message message = new Message();
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         startX = event.getRawX();
@@ -89,6 +90,10 @@ public class ViewManager {
                         }
                         startX = event.getRawX();
                         startY = event.getRawY();
+                        isOnMoving = true; //正在移动，不要隐藏
+
+                        message.what = MSG_HIDE;
+                        hideHandler.removeMessages(message.what);
                         break;
                     case MotionEvent.ACTION_UP:
                         //判断松手时View的横坐标是靠近屏幕哪一侧，将View移动到依靠屏幕
@@ -114,7 +119,10 @@ public class ViewManager {
 //                        Log.e(TAG, floatBallParams.x+" floatX onTouch: floatY=== "+floatBallParams.y );
                         //如果初始落点与松手落点的坐标差值超过6个像素，则拦截该点击事件
                         //否则继续传递，将事件交给OnClickListener函数处理
-//                        hideHandler.postDelayed(hideRunable, 2000);
+                        isOnMoving = false;
+//                        hideHandler.postDelayed(hideRunable, 3000);
+                        message.what = MSG_HIDE;
+                        hideHandler.sendMessageDelayed(message,3000);
                         if (Math.abs(endX - tempX) > 6 && Math.abs(endY - tempY) > 6) {
                             return true;
                         }
@@ -258,7 +266,8 @@ public class ViewManager {
 
 
     //计时隐藏
-    public final static int MSG_HIDE_LEFT = 0x01;
+    public final static int MSG_HIDE = 0x01;
+    public final static int MSG_HIDE_LEFT = 0x03;
     public final static int MSG_HIDE_RIGHT = 0x02;
     private Boolean isLeftHide; //用来判断是要左边隐藏还是右边
 
@@ -268,32 +277,56 @@ public class ViewManager {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case MSG_HIDE_LEFT:
-                    floatBallParams.x = 0 - floatBall.getWidth() / 2;
-                   // windowManager.updateViewLayout(floatBall, floatBallParams);
-                    animateTo(floatBallParams.x,0 - floatBall.getWidth() / 2);
+                case MSG_HIDE:
+                    if(isLeftHide) {
+                        floatBallParams.x = 0 - floatBall.getWidth() / 2;
+                        windowManager.updateViewLayout(floatBall, floatBallParams);
+//                    animateTo(floatBallParams.x,0 - floatBall.getWidth() / 2);
+                        Log.e(TAG, "onClick: buttonParams=== " + buttonParams);
+                        if (buttonParams != null) {
+                            windowManager.removeView(buttonMenu);
+                            buttonParams = null;
+                        }
+                    }else{
+                        floatBallParams.x = getScreenWidth() - floatBall.getWidth()/2;
+                        windowManager.updateViewLayout(floatBall, floatBallParams);
+//                    animateTo(floatBallParams.x,getScreenWidth() - floatBall.getWidth()/2);
+                        Log.e(TAG, "onClick: buttonParams=== "+buttonParams );
+                        if(buttonParams != null){
+                            windowManager.removeView(buttonMenu);
+                            buttonParams = null;
+                        }
+                    }
                     break;
                 case MSG_HIDE_RIGHT:
-                    floatBallParams.x = getScreenWidth() - floatBall.getWidth()/2;
-                   // windowManager.updateViewLayout(floatBall, floatBallParams);
-                    animateTo(floatBallParams.x,getScreenWidth() - floatBall.getWidth()/2);
+//                    floatBallParams.x = getScreenWidth() - floatBall.getWidth()/2;
+//                    windowManager.updateViewLayout(floatBall, floatBallParams);
+////                    animateTo(floatBallParams.x,getScreenWidth() - floatBall.getWidth()/2);
+//                    Log.e(TAG, "onClick: buttonParams=== "+buttonParams );
+//                    if(buttonParams != null){
+//                        windowManager.removeView(buttonMenu);
+//                        buttonParams = null;
+//                    }
                     break;
             }
 
         }
     };
 
+    private Boolean isOnMoving;
     private Runnable hideRunable = new Runnable() {
 
         @Override
         public void run() {
             Message message = new Message();
-            if (isLeftHide) {
-                message.what = MSG_HIDE_LEFT;
-                hideHandler.sendMessage(message);
-            } else {
-                message.what = MSG_HIDE_RIGHT;
-                hideHandler.sendMessage(message);
+            if(!isOnMoving) {
+                if (isLeftHide) {
+                    message.what = MSG_HIDE_LEFT;
+                    hideHandler.sendMessage(message);
+                } else {
+                    message.what = MSG_HIDE_RIGHT;
+                    hideHandler.sendMessage(message);
+                }
             }
         }
     };

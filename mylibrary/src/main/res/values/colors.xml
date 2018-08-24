@@ -103,7 +103,6 @@
     <color name="theme_gay">#f5f5f5</color>  <!--主要的灰色背景-->
 
     <color name="line_gay">#ececec</color>  <!--白色背景下的灰色线条颜色-->
-    <color name="line_gay_gay_back">#cecece</color><!--灰色背景下的灰色线条颜色-->
 
     <!--字体颜色-->
     <color name="font_black">#494949</color>
@@ -121,4 +120,11 @@
     <color name="button_gray">#cdcdcd</color>
     <color name="button_orange">#ff9e05</color>
     <color name="button_red">#ff2b23</color>
+
+    <!--sky -->
+    <color name="line_gay_gay_back">#eceef5</color><!--灰色背景下的灰色线条颜色-->
+    <color name="text_hint">#ced3d1</color><!--提示灰色字体-->
+    <color name="line_regist">#3595fa</color><!--注册蓝色-->
+    <color name="text_unselected">#afb2b2</color><!--没选中字体颜色-->
+
 </resources>

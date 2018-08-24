@@ -1,6 +1,7 @@
 package com.example.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.mylibrary.GameCenterActivity;
 import com.example.mylibrary2.R;
 
 /**
@@ -55,8 +57,8 @@ public class ButtonMenu extends LinearLayout implements View.OnClickListener{
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.ll_selfCenter) {
-            Toast.makeText(mContext, "个人中心", Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(mContext, GameCenterActivity.class);
+            mContext.startActivity(intent);
         } else if (i == R.id.ll_recorder) {
             Toast.makeText(mContext, "消费记录", Toast.LENGTH_SHORT).show();
 

@@ -10,6 +10,8 @@
             android:name="com.example.service.StartFloatBallService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity android:name="com.example.mylibrary.GameCenterActivity"></activity>
     </application>
 
 

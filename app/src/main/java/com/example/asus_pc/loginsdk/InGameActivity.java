@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.ViewManager;
+import android.view.Window;
 
 import com.example.mylibrary.TestSdk;
 
@@ -18,9 +20,18 @@ public class InGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_in_game);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         TestSdk.startLoginService(InGameActivity.this);
-        Log.e(TAG, "onCreate: InGameActivity=== " );
+        com.example.manager.ViewManager manager = com.example.manager.ViewManager.getInstance(this);
+        manager.showFloatBall();
+        manager.showButtonMenu();
     }
 
     @Override

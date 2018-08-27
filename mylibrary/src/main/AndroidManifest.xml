@@ -3,16 +3,19 @@
     package="com.example.mylibrary2">
 
     <application>
-        <activity android:name="com.example.mylibrary.RegisterActivity"></activity>
-        <activity android:name="com.example.mylibrary.RegisterDialog" android:theme="@style/dialogstyle"></activity>
+        <activity android:name="com.example.mylibrary.RegisterActivity" />
+        <activity
+            android:name="com.example.mylibrary.RegisterDialog"
+            android:theme="@style/dialogstyle" />
 
         <service
             android:name="com.example.service.StartFloatBallService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
-        <activity android:name="com.example.mylibrary.GameCenterActivity"></activity>
+        <activity android:name="com.example.mylibrary.GameCenterActivity" />
+        <activity android:name="com.example.mylibrary.ChangeUserActivity" />
+        <activity android:name="com.example.mylibrary.BindPhoneActivity"></activity>
     </application>
-
 
 </manifest>

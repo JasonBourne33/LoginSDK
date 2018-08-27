@@ -23,7 +23,8 @@ public class StartFloatBallService extends Service {
     public void onCreate() {
         super.onCreate();
         ViewManager manager = ViewManager.getInstance(this);
-        manager.showFloatBall();
+//        manager.showFloatBall();
+
 //        Dialog dialog = new Dialog(this);
 //        dialog.show();
     }

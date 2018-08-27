@@ -126,5 +126,6 @@
     <color name="text_hint">#ced3d1</color><!--提示灰色字体-->
     <color name="line_regist">#3595fa</color><!--注册蓝色-->
     <color name="text_unselected">#afb2b2</color><!--没选中字体颜色-->
+    <color name="line_gray">#f0f4f9</color><!-- 分割-->
 
 </resources>

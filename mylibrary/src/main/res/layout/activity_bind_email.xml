@@ -31,7 +31,7 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:layout_toRightOf="@id/img_back"
-                android:text="绑定手机号码"
+                android:text="绑定邮箱"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </RelativeLayout>
@@ -56,7 +56,7 @@
             android:layout_height="26dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/game_sdk_bind_phone_icon" />
+            android:src="@drawable/game_sdk_bind_email_icon" />
 
         <EditText
             android:id="@+id/et_enterPhone"
@@ -67,7 +67,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/img_phone"
             android:background="@null"
-            android:hint="请输入手机号码"
+            android:hint="请输入邮箱地址"
             android:inputType="textPassword"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@null"

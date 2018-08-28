@@ -213,6 +213,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
@@ -260,6 +261,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_changePwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
@@ -323,7 +325,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/game_sdk_update_pwd_icon" />
+                android:background="@drawable/game_sdk_package_icon" />
 
             <TextView
                 android:id="@+id/tv_getGift"

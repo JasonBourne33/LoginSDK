@@ -94,5 +94,8 @@
 
     <dimen name="ll_width_login_dialog">240sp</dimen>
 
+    <!-- sky -->
+    <dimen name="self_center_icon_width">15dp</dimen>
+    <dimen name="self_center_icon_height">18dp</dimen>
 
 </resources>

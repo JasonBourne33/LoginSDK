@@ -15,7 +15,10 @@
 
         <activity android:name="com.example.mylibrary.GameCenterActivity" />
         <activity android:name="com.example.mylibrary.ChangeUserActivity" />
-        <activity android:name="com.example.mylibrary.BindPhoneActivity"></activity>
+        <activity android:name="com.example.mylibrary.BindPhoneActivity" />
+        <activity android:name="com.example.mylibrary.BindEmailActivity" />
+        <activity android:name="com.example.mylibrary.ChangePwdActivity" />
+        <activity android:name="com.example.mylibrary.ServiceOnlineActivity"></activity>
     </application>
 
 </manifest>

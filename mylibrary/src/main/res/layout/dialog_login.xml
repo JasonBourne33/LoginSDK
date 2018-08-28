@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="280dp"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:background="@drawable/shape_dialog"
@@ -112,8 +112,8 @@
 
                 <ImageView
                     android:id="@+id/img_eye"
-                    android:layout_width="31dp"
-                    android:layout_height="18dp"
+                    android:layout_width="23dp"
+                    android:layout_height="14dp"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_pwd"
                     android:src="@drawable/game_sdk_pwd_eye_icon" />

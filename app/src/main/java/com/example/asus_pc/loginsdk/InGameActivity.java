@@ -1,27 +1,40 @@
 package com.example.asus_pc.loginsdk;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.ViewManager;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.manager.ViewManager;
 import com.example.mylibrary.TestSdk;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class InGameActivity extends AppCompatActivity {
 
     private static final String TAG = "e";
+    @BindView(R.id.tv_userInfo)
+    TextView tvUserInfo;
+    @BindView(R.id.btn_unLogin)
+    Button btnUnLogin;
+    @BindView(R.id.btn_pay)
+    Button btnPay;
+    @BindView(R.id.btn_uploadInfo)
+    Button btnUploadInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_in_game);
+        ButterKnife.bind(this);
 
     }
 
@@ -29,7 +42,7 @@ public class InGameActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         TestSdk.startLoginService(InGameActivity.this);
-        com.example.manager.ViewManager manager = com.example.manager.ViewManager.getInstance(this);
+        ViewManager manager = ViewManager.getInstance(this);
         manager.showFloatBall();
         manager.showButtonMenu();
     }
@@ -60,6 +73,18 @@ public class InGameActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @OnClick({R.id.btn_unLogin, R.id.btn_pay, R.id.btn_uploadInfo})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_unLogin:
+                break;
+            case R.id.btn_pay:
+                break;
+            case R.id.btn_uploadInfo:
+                break;
+        }
     }
 
 //    public boolean onKeyDown(int keyCode,KeyEvent event){

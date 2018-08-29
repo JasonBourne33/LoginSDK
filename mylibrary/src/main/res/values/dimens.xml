@@ -92,7 +92,7 @@
     <dimen name="text_size_large">20sp</dimen>
 
 
-    <dimen name="ll_width_login_dialog">240sp</dimen>
+    <dimen name="ll_width_login_dialog">220sp</dimen>
 
     <!-- sky -->
     <dimen name="self_center_icon_width">15dp</dimen>

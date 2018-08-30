@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onSuccess(String successJson) {
                         Intent intent = new Intent(MainActivity.this,InGameActivity.class);
                         startActivity(intent);
-                        finish();
                     }
 
                     @Override

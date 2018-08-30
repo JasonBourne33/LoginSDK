@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="@dimen/dialog_parent_width"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:background="@drawable/shape_dialog"
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/ll_head"
             android:layout_width="@dimen/ll_width_login_dialog"
             android:layout_height="wrap_content"
@@ -19,31 +19,34 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="118dp"
-                android:layout_height="20dp"
+                android:id="@+id/img_icon"
+                android:layout_width="100dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
                 android:src="@drawable/game_sdk_title_logo_icon" />
 
             <View
+                android:id="@+id/view_center"
                 android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:background="@color/gray" />
+                android:layout_height="20dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/line_gay_gay_back"/>
 
             <TextView
                 android:id="@+id/tv_userLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="用户登录" />
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/view_center"
+                android:text="一建注册" />
 
             <ImageView
                 android:id="@+id/img_close"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginLeft="14dp"
                 android:src="@drawable/game_sdk_close_icon" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="@dimen/ll_width_login_dialog"
@@ -55,13 +58,16 @@
             <RelativeLayout
                 android:layout_width="@dimen/ll_width_login_dialog"
                 android:layout_height="wrap_content"
+                android:background="#e7e7e7"
+                android:paddingBottom="5dp"
                 android:layout_marginTop="21dp">
 
                 <ImageView
                     android:id="@+id/img_user"
-                    android:layout_width="21dp"
-                    android:layout_height="26dp"
+                    android:layout_width="@dimen/self_center_icon_width"
+                    android:layout_height="@dimen/self_center_icon_height"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/game_sdk_user_icon" />
 
                 <EditText
@@ -74,15 +80,15 @@
                     android:background="@null"
                     android:hint="请输入手机号码/用户名/邮箱"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textColor="#cad5da"
+                    android:textSize="@dimen/text_size_more_small" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/gray" />
+                android:background="@color/line_gray" />
 
             <RelativeLayout
                 android:layout_width="@dimen/ll_width_login_dialog"
@@ -90,9 +96,10 @@
 
                 <ImageView
                     android:id="@+id/img_pwd"
-                    android:layout_width="21dp"
-                    android:layout_height="26dp"
+                    android:layout_width="@dimen/self_center_icon_width"
+                    android:layout_height="@dimen/self_center_icon_height"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/game_sdk_pwd_icon" />
 
                 <EditText
@@ -106,14 +113,15 @@
                     android:hint="请输入密码"
                     android:inputType="textPassword"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_more_small" />
 
                 <ImageView
                     android:id="@+id/img_eye"
-                    android:layout_width="31dp"
-                    android:layout_height="18dp"
+                    android:layout_width="20dp"
+                    android:layout_height="12dp"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/et_pwd"
+
                     android:src="@drawable/game_sdk_pwd_eye_icon" />
             </RelativeLayout>
 
@@ -122,13 +130,13 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/gray" />
+                android:background="@color/line_gray" />
 
 
             <Button
                 android:id="@+id/btn_enter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/button_login_height"
                 android:background="@drawable/game_sdk_button_bg"
                 android:textColor="@color/white"
                 android:text="完成注册" />

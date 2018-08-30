@@ -19,9 +19,9 @@ public class TestSdk {
 //    }
 
     public static void login(Context context, OnLoginListener listener) {
-
         Log.i("aaa", "test=== ");
         if (listener != null) {
+            mOnLoginListener = listener;
             LoginDialog loginDialog = new LoginDialog(context, listener);
             loginDialog.show();
         } else {
@@ -57,7 +57,7 @@ public class TestSdk {
         void onFailed(String failJson);
     }
 
-    public static void setOnLoginListener(OnLoginListener listener) {
-        mOnLoginListener = listener;
-    }
+//    public static void setOnLoginListener(OnLoginListener listener) {
+//        mOnLoginListener = listener;
+//    }
 }

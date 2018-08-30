@@ -70,7 +70,7 @@ public class RegisterDialog extends AppCompatActivity implements View.OnClickLis
         imgClose.setOnClickListener(this);
 //        Log.e("e","fragmentManager=== "+getSupportFragmentManager());
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), listFragment);
-        Fragment registByPhoneFragment = new RegistByPhoneFragment();
+        Fragment registByPhoneFragment = new RegistByPhoneFragment(this);
         Fragment registByAccountAccount = new RegistByAccountFragment(this);
         listFragment.add(registByPhoneFragment);
         listFragment.add(registByAccountAccount);

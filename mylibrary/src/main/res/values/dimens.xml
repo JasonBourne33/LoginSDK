@@ -97,5 +97,7 @@
     <!-- sky -->
     <dimen name="self_center_icon_width">15dp</dimen>
     <dimen name="self_center_icon_height">18dp</dimen>
+    <dimen name="dialog_parent_width">280dp</dimen>
+    <dimen name="button_login_height">35dp</dimen>
 
 </resources>

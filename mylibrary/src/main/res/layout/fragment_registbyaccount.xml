@@ -14,8 +14,8 @@
 
             <ImageView
                 android:id="@+id/img_user"
-                android:layout_width="21dp"
-                android:layout_height="26dp"
+                android:layout_width="@dimen/self_center_icon_width"
+                android:layout_height="@dimen/self_center_icon_height"
                 android:layout_centerVertical="true"
                 android:src="@drawable/game_sdk_user_icon" />
 
@@ -28,9 +28,9 @@
                 android:layout_toRightOf="@id/img_user"
                 android:background="@null"
                 android:textCursorDrawable="@null"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_more_small"
                 android:textColorHint="@color/text_hint"
-                android:hint="请输入手机号码/用户名/邮箱" />
+                android:hint="请输入用户名" />
         </RelativeLayout>
 
         <View
@@ -46,8 +46,8 @@
 
             <ImageView
                 android:id="@+id/img_pwd"
-                android:layout_width="21dp"
-                android:layout_height="26dp"
+                android:layout_width="@dimen/self_center_icon_width"
+                android:layout_height="@dimen/self_center_icon_height"
                 android:layout_centerVertical="true"
                 android:src="@drawable/game_sdk_pwd_icon" />
 
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:textCursorDrawable="@null"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_more_small"
                 android:inputType="textPassword"
                 android:textColorHint="@color/text_hint"
                 android:hint="请输入密码" />
@@ -78,13 +78,13 @@
 
             <ImageView
                 android:id="@+id/img_sms"
-                android:layout_width="21dp"
-                android:layout_height="26dp"
+                android:layout_width="@dimen/self_center_icon_width"
+                android:layout_height="@dimen/self_center_icon_height"
                 android:layout_centerVertical="true"
                 android:src="@drawable/game_sdk_pwd_icon" />
 
             <EditText
-                android:id="@+id/et_sms"
+                android:id="@+id/et_pwdAgain"
                 android:layout_width="99dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -96,7 +96,7 @@
                 android:inputType="textPassword"
                 android:textCursorDrawable="@null"
                 android:textColorHint="@color/text_hint"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_more_small" />
 
         </RelativeLayout>
 
@@ -119,11 +119,12 @@
                 android:layout_marginTop="5dp"
                 android:src="@drawable/game_sdk_enter_icon"/>
             <TextView
-                android:id="@+id/tv_forgetPwd"
+                android:id="@+id/tv_backToLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_toLeftOf="@id/img_enter"
+                android:textSize="@dimen/text_size_more_small"
                 android:text="返回登陆" />
 
         </RelativeLayout>
@@ -131,7 +132,7 @@
         <Button
             android:id="@+id/btn_enter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_login_height"
             android:background="@drawable/game_sdk_button_bg"
             android:textColor="@color/white"
             android:text="完成注册" />

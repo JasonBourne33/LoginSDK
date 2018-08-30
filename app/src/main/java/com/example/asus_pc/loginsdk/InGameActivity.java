@@ -79,6 +79,7 @@ public class InGameActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_unLogin:
+                finish();
                 break;
             case R.id.btn_pay:
                 break;

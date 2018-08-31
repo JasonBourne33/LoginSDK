@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +23,8 @@ public class InGameActivity extends AppCompatActivity {
     private static final String TAG = "e";
     @BindView(R.id.tv_userInfo)
     TextView tvUserInfo;
+    @BindView(R.id.tv_userName)
+    TextView tvUserName;
     @BindView(R.id.btn_unLogin)
     Button btnUnLogin;
     @BindView(R.id.btn_pay)
@@ -35,7 +38,7 @@ public class InGameActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_in_game);
         ButterKnife.bind(this);
-
+        tvUserName.setText("账号"+TestSdk.getUserName(this));
     }
 
     @Override
@@ -118,4 +121,11 @@ public class InGameActivity extends AppCompatActivity {
 //        dialog.show();
 //    }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy: InGameActivity=== " );
+        TestSdk.DestoryWindowButton(this);
+    }
 }

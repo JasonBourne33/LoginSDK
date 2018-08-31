@@ -22,7 +22,9 @@ import android.widget.Toast;
 
 import com.example.dao.LoginBean;
 import com.example.mylibrary.LoginDialog;
+import com.example.mylibrary.TestSdk;
 import com.example.mylibrary2.R;
+import com.example.util.SharedPreferencesUtil;
 import com.example.util.UrlUtil;
 import com.google.gson.Gson;
 
@@ -46,10 +48,12 @@ public class RegistByPhoneFragment extends Fragment implements View.OnClickListe
     private EditText etAccount;
     private Context mContext;
     private ImageView imgEye;
+    private TestSdk.OnLoginListener listener;
 
     @SuppressLint("ValidFragment")
     public RegistByPhoneFragment(Context context) {
         this.mContext = context;
+        listener = LoginDialog.getListener();
     }
 
     @Nullable
@@ -252,10 +256,15 @@ public class RegistByPhoneFragment extends Fragment implements View.OnClickListe
                     Toast.makeText(mContext, "不合法手机号/邮箱", Toast.LENGTH_SHORT).show();
                     break;
                 case REGIST_SUCCESS:
-                    Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
-//                    LoginDialog loginDialog = new LoginDialog(mContext, mOnLoginListener);
-//                    loginDialog.show();
-//                    getActivity().finish();
+                    if (listener != null) {
+                        Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
+                        SharedPreferencesUtil.putString(mContext, "userName", etAccount.getText().toString());
+                        SharedPreferencesUtil.putString(mContext, "userPwd", etPwd.getText().toString());
+                        listener.onSuccess("success");
+                        getActivity().finish();
+                    }else {
+                        Log.e(TAG, "listener:=== "+listener );
+                    }
                     break;
             }
         }

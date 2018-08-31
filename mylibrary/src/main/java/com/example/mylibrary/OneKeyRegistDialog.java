@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -44,9 +45,13 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
     private EditText etPwd;
     private EditText etAccount;
-    public OneKeyRegistDialog(@NonNull Context context) {
+    private ImageView imgEye;
+    private TestSdk.OnLoginListener listener;
+
+    public OneKeyRegistDialog(@NonNull Context context, TestSdk.OnLoginListener listener) {
         super(context);
         this.mContext = context;
+        this.listener = listener;
     }
 
     @Override
@@ -58,6 +63,8 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
         TextView tvBackToLogin = findViewById(R.id.tv_backToLogin);
         ImageView imgClose = findViewById(R.id.img_close);
 
+        imgEye = findViewById(R.id.img_eye);
+
         etAccount = findViewById(R.id.et_account);
         Button btnEnter = findViewById(R.id.btn_enter);
 
@@ -67,6 +74,7 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
         tvBackToLogin.setOnClickListener(this);
         imgClose.setOnClickListener(this);
         btnEnter.setOnClickListener(this);
+        imgEye.setOnClickListener(this);
         etAccount.setKeyListener(null);
     }
 
@@ -83,18 +91,33 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
             dismiss();
         } else if (i == R.id.btn_enter) {
             String strPwd = etPwd.getText().toString();
-            if(strPwd.equals("")){
-                Toast.makeText(mContext,"请输入密码",Toast.LENGTH_SHORT).show();
-            }else{
+            if (strPwd.equals("")) {
+                Toast.makeText(mContext, "请输入密码", Toast.LENGTH_SHORT).show();
+            } else {
                 String strJson = toJson();
-                String finalUrl = UrlUtil.getQuestUrl(rawUrl,strJson);
+                String finalUrl = UrlUtil.getQuestUrl(rawUrl, strJson);
                 OnKeyRegistRequest(finalUrl);
             }
+        } else if (i == R.id.img_eye) {
+            eyeImageClick();
+        }
+    }
+
+    private void eyeImageClick() {
+        if (etPwd.getInputType() == 129) {
+            //true ,show the pwd
+            etPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            imgEye.setImageResource(R.drawable.game_sdk_pwd_eye_icon);
+        } else {
+            //hide the pwd
+            etPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            imgEye.setImageResource(R.drawable.game_sdk_hide_pwd_icon);
         }
     }
 
     public String rawUrl = "http://apisdk.98gam.com/v1/public/register";
     public String method = "v1/public/register";
+
     private String toJson() {
         JSONObject jsonObj = new JSONObject();
         try {
@@ -107,7 +130,7 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
         return jsonObj.toString();
     }
 
-    private void OnKeyRegistRequest(String url){
+    private void OnKeyRegistRequest(String url) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
@@ -128,14 +151,14 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
                     JSONObject jsonObject = null;
 
                     jsonObject = new JSONObject(jsonData);
-                    Log.e(TAG, "jsonObject=== "+jsonObject );
+                    Log.e(TAG, "jsonObject=== " + jsonObject);
                     int ret = jsonObject.getInt("ret");
                     if (ret == 200) {
-                        Log.e(TAG, "login success=== " );
+                        Log.e(TAG, "login success=== ");
                         Message msg = new Message();
                         msg.what = REGIST_SUCCESS;
                         handler.sendMessage(msg);
-                    } else if(ret == 10001){
+                    } else if (ret == 10001) {
                         Message msg = new Message();
                         msg.what = REGIST_FAIL;
                         handler.sendMessage(msg);
@@ -150,19 +173,20 @@ public class OneKeyRegistDialog extends Dialog implements View.OnClickListener {
     public static final int REGIST_SUCCESS = 1;
     public static final int REGIST_FAIL = 2;
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
-        public void handleMessage(Message msg){
-            switch (msg.what){
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
                 case REGIST_SUCCESS:
-                    Toast.makeText(mContext,"注册成功",Toast.LENGTH_SHORT).show();
-                    SharedPreferencesUtil.putString(mContext,"userName",etAccount.getText().toString());
-                    SharedPreferencesUtil.putString(mContext,"userPwd",etPwd.getText().toString());
-                    LoginDialog loginDialog = new LoginDialog(mContext, mOnLoginListener);
-                    loginDialog.show();
-                    dismiss();
+                    if (listener != null) {
+                        Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
+                        SharedPreferencesUtil.putString(mContext, "userName", etAccount.getText().toString());
+                        SharedPreferencesUtil.putString(mContext, "userPwd", etPwd.getText().toString());
+                        listener.onSuccess("success");
+                        dismiss();
+                    }
                     break;
                 case REGIST_FAIL:
-                    Toast.makeText(mContext,"注册失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "注册失败", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

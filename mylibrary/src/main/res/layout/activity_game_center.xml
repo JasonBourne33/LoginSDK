@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/img_rPhone"
-                android:text="绑定手机密码"
+                android:text="绑定手机号码"
                 android:textColor="@color/black" />
 
             <ImageView
@@ -395,7 +395,7 @@
         <Button
             android:id="@+id/btn_changeUser"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_login_height"
             android:background="@drawable/game_sdk_button_bg"
             android:text="切换账号"
             android:layout_centerHorizontal="true"

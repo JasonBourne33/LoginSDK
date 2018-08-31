@@ -28,8 +28,8 @@
 
             <ImageView
                 android:id="@+id/img_close"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/game_sdk_close_icon" />
         </RelativeLayout>

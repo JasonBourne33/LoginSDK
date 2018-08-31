@@ -35,8 +35,10 @@ import java.util.List;
 
 public class RegisterDialog extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "dd";
     private Context mContext;
     private FragmentManager fragmentManager;
+    private TestSdk.OnLoginListener listener;
 
     private SlidingTabLayout tabLayout;
     private MyPagerAdapter mAdapter;
@@ -82,7 +84,7 @@ public class RegisterDialog extends AppCompatActivity implements View.OnClickLis
         tabLayout =  ViewFindUtils.find(decorView,R.id.tab_mine_pay);
         tabLayout.setViewPager(vp);
         vp.setCurrentItem(0);
-
+        listener = LoginDialog.getListener();
     }
 
     @Override

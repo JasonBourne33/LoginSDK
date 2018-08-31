@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.dao.LoginBean;
 import com.example.mylibrary.LoginDialog;
 import com.example.mylibrary.RegisterDialog;
+import com.example.mylibrary.TestSdk;
 import com.example.mylibrary2.R;
 import com.example.mylibrary2.R2;
 import com.example.util.MD5Utils;
@@ -58,6 +59,7 @@ public class RegistByAccountFragment extends Fragment implements View.OnClickLis
     private static final int USER_EXIST = 1;
     private static final int REGIST_SUCCESS  = 2;
     private Context mContext;
+    private TestSdk.OnLoginListener listener;
     private String strAccount;
     private String strPwd;
     private String strPwdAgain;
@@ -69,6 +71,7 @@ public class RegistByAccountFragment extends Fragment implements View.OnClickLis
     @SuppressLint("ValidFragment")
     public RegistByAccountFragment(Context context) {
         this.mContext = context;
+        listener = LoginDialog.getListener();
     }
 
     @Nullable
@@ -134,7 +137,15 @@ public class RegistByAccountFragment extends Fragment implements View.OnClickLis
                     getActivity().finish();
                     break;
                 case REGIST_SUCCESS:
-                    Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
+                    if (listener != null) {
+                        Toast.makeText(mContext, "注册成功", Toast.LENGTH_SHORT).show();
+                        SharedPreferencesUtil.putString(mContext, "userName", etAccount.getText().toString());
+                        SharedPreferencesUtil.putString(mContext, "userPwd", etPwd.getText().toString());
+                        listener.onSuccess("success");
+                        getActivity().finish();
+                    }else {
+                        Log.e(TAG, "listener:=== "+listener );
+                    }
                     break;
             }
         }

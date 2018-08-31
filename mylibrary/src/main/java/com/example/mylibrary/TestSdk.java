@@ -12,6 +12,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.service.StartFloatBallService;
+import com.example.util.SharedPreferencesUtil;
+
+import static android.content.ContentValues.TAG;
 
 public class TestSdk {
 //    public static void login(Context context, FragmentManager fragmentManager) {
@@ -57,6 +60,22 @@ public class TestSdk {
         void onFailed(String failJson);
     }
 
+
+    public interface OnWindowButtonDestory{
+        void OnButtonDestory(Boolean needDestory);
+    }
+    public static OnWindowButtonDestory mOnWindowButtonDestory;
+
+    public static void DestoryWindowButton(Context context){
+        com.example.manager.ViewManager manager = com.example.manager.ViewManager.getInstance(context);
+        manager.destory();
+    };
+
+    public static String getUserName(Context context){
+        String userName = SharedPreferencesUtil.getString(context, "userName");
+        Log.e(TAG, "getUserName:=== "+userName );
+        return userName;
+    };
 //    public static void setOnLoginListener(OnLoginListener listener) {
 //        mOnLoginListener = listener;
 //    }

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dao.LoginBean;
+import com.example.manager.ViewManager;
 import com.example.mylibrary2.R;
 import com.example.util.MD5Utils;
 import com.example.util.RSAUtils;
@@ -28,6 +29,7 @@ import com.example.util.SharedPreferencesUtil;
 import com.example.util.StringUtil;
 import com.example.util.UrlUtil;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +52,7 @@ import static com.example.util.RSAUtils.getPublicKey;
 
 public class LoginDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
-    private TestSdk.OnLoginListener listener;
+    private static TestSdk.OnLoginListener listener;
 
     private EditText etUser;
     private EditText etPwd;
@@ -68,7 +70,14 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
         this.listener = listener;
     }
 
-    private static LoginDialog instance = null;
+    public static TestSdk.OnLoginListener getListener() {
+        if (listener != null) {
+            return listener;
+        }else {
+            Log.e(TAG, "getListener:=== null" );
+        }
+        return null;
+    }
 
     public LoginDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
@@ -126,7 +135,7 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
             dismiss();
         }
         if (i == R.id.tv_oneKeyRegist) {
-            OneKeyRegistDialog oneKeyRegistDialog = new OneKeyRegistDialog(mContext);
+            OneKeyRegistDialog oneKeyRegistDialog = new OneKeyRegistDialog(mContext,listener);
             oneKeyRegistDialog.show();
             dismiss();
         }
@@ -136,7 +145,6 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
 //            dismiss();
             Intent intent = new Intent(mContext, RegisterDialog.class);
             mContext.startActivity(intent);
-            dismiss();
         }
         if (i == R.id.btn_enter) {
             strUser = etUser.getText().toString();
@@ -201,11 +209,14 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
                     jsonObject = new JSONObject(jsonData);
                     Log.e(TAG, "jsonObject=== "+jsonObject );
                     int ret = jsonObject.getInt("ret");
+                    LoginBean.DataBean dataBean = bean.getData();
                     if (ret == 200) {
                         if (listener != null) {
                             listener.onSuccess("SUCCESS");
                             SharedPreferencesUtil.putString(mContext, "userName", etUser.getText().toString());
                             SharedPreferencesUtil.putString(mContext, "userPwd", etPwd.getText().toString());
+                            SharedPreferencesUtil.putString(mContext, "id", String.valueOf(dataBean.getId()));
+                            SharedPreferencesUtil.putString(mContext, "access_token", dataBean.getAccess_token());
                         }
                         Log.e(TAG, "login success=== " );
 
@@ -236,6 +247,15 @@ public class LoginDialog extends Dialog implements View.OnClickListener {
             }
         }
     };
+
+    //获取ViewManager实例
+    public static LoginDialog loginDialog;
+    public static LoginDialog getInstance() {
+        if (loginDialog == null) {
+            Log.e(TAG, "loginDialog getInstance=== null " );
+        }
+        return loginDialog;
+    }
 
     //testLogin
 //    private void TestLoginRequest() {

@@ -52,15 +52,15 @@
 
         <ImageView
             android:id="@+id/img_phone"
-            android:layout_width="21dp"
-            android:layout_height="26dp"
+            android:layout_width="@dimen/self_center_icon_width"
+            android:layout_height="@dimen/self_center_icon_height"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:src="@drawable/game_sdk_bind_email_icon" />
 
         <EditText
             android:id="@+id/et_enterPhone"
-            android:layout_width="99dp"
+            android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
@@ -68,10 +68,9 @@
             android:layout_toRightOf="@id/img_phone"
             android:background="@null"
             android:hint="请输入邮箱地址"
-            android:inputType="textPassword"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_more_small" />
 
         <TextView
             android:id="@+id/tv_sms"
@@ -103,15 +102,15 @@
 
         <ImageView
             android:id="@+id/img_sms"
-            android:layout_width="21dp"
-            android:layout_height="26dp"
+            android:layout_width="@dimen/self_center_icon_width"
+            android:layout_height="@dimen/self_center_icon_height"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:src="@drawable/game_sdk_sms_icon" />
 
         <EditText
             android:id="@+id/et_sms"
-            android:layout_width="99dp"
+            android:layout_width="236dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
@@ -119,10 +118,10 @@
             android:layout_toRightOf="@id/img_sms"
             android:background="@null"
             android:hint="请输入验证码"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:textColorHint="@color/text_hint"
             android:textCursorDrawable="@null"
-            android:textSize="@dimen/text_size_small" />
+            android:textSize="@dimen/text_size_more_small" />
 
 
     </RelativeLayout>
@@ -136,7 +135,7 @@
         <Button
             android:id="@+id/btn_save"
             android:layout_width="340dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/button_login_height"
             android:layout_centerInParent="true"
             android:background="@drawable/button_background_blue"
             android:text="绑定"
